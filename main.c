@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 15:35:23 by smarsi            #+#    #+#             */
-/*   Updated: 2024/02/26 12:11:27 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/02/26 12:27:14 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	main(int ac, char *av[])
 	split_numbers = get_args(ac, av);
 	if (!split_numbers)
 	{
-		write(2, "need at lease 1 number\n", 23);
+		write(2, "at least one numbern", 23);
 		exit(1);
 	}
 	check_is_number_no_dup(split_numbers);
