@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 15:35:23 by smarsi            #+#    #+#             */
-/*   Updated: 2024/02/26 12:27:27 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/02/27 22:50:30 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int	main(int ac, char *av[])
 {
 	char	**split_numbers;
 	t_stack	*stack_a;
+	t_stack	*stack_b;
 
 	stack_a = NULL;
 	if (ac < 2)
@@ -115,11 +116,8 @@ int	main(int ac, char *av[])
 	}
 	check_is_number_no_dup(split_numbers);
 	add_numbers_into_linkedlist(split_numbers, &stack_a);
-	while (stack_a)
-	{
-		printf("%d\n", stack_a->content);
-		stack_a = stack_a->next;
-	}
 	ft_free(split_numbers);
+	ft_lstclear(&stack_a, NULL);
+	ft_lstclear(&stack_b, NULL);
 	return (0);
 }
