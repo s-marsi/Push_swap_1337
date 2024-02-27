@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 10:23:20 by smarsi            #+#    #+#             */
-/*   Updated: 2024/02/25 12:41:35 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/02/27 22:48:54 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	add_numbers_into_linkedlist(char **numbers, t_stack	**stack_a)
 	while (numbers[i])
 	{
 		nb = ft_atoi(numbers[i]);
+		printf("%d\n", nb);
 		new_lst = ft_lstnew(nb);
 		ft_lstadd_back(stack_a, new_lst);
-		ft_lstdelone(new_lst, NULL);
 		i++;
 	}
 }
