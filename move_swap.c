@@ -6,12 +6,11 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 23:48:51 by smarsi            #+#    #+#             */
-/*   Updated: 2024/02/28 08:34:44 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/03/02 07:58:44 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 void	swap(t_stack **stack, char c)
 {
