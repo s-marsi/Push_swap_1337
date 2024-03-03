@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 12:56:44 by smarsi            #+#    #+#             */
-/*   Updated: 2024/02/25 13:03:57 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/02/28 21:52:25 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,16 @@ char	**ft_split(char const *s, char c);
 typedef struct s_list
 {
 	int				content;
+	int				index;
 	struct s_list	*next;
 }	t_stack;
-t_stack	*ft_lstnew(int content);
+t_stack	*ft_lstnew(int content, int index);
 void	ft_lstadd_front(t_stack **lst, t_stack *new);
 int		ft_lstsize(t_stack *lst);
 t_stack	*ft_lstlast(t_stack *lst);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
 void	ft_lstdelone(t_stack *lst, void (*del)(int));
 void	ft_lstclear(t_stack **lst, void (*del)(int));
-void	ft_lstiter(t_stack *lst, void (*f)(int));
+void	ft_lstiter(t_stack **lst);
 t_stack	*ft_lstmap(t_stack *lst, int (*f)(int), void (*del)(int));
 #endif

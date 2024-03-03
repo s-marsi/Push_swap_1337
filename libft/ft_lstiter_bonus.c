@@ -6,19 +6,25 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 11:46:25 by smarsi            #+#    #+#             */
-/*   Updated: 2024/02/25 10:41:13 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/03/02 22:50:31 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstiter(t_stack *lst, void (*f)(int))
+void	ft_lstiter(t_stack **lst)
 {
-	if (!lst || !f)
+	t_stack	*tmp;
+	int		i;
+
+	if (!lst)
 		return ;
-	while (lst)
+	tmp = *lst;
+	i = 0;
+	while (tmp)
 	{
-		f(lst->content);
-		lst = lst->next;
+		tmp->index = i;
+		tmp = tmp->next;
+		i++;
 	}
 }
