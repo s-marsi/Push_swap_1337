@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 15:52:28 by smarsi            #+#    #+#             */
-/*   Updated: 2024/03/03 14:46:57 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/03/04 10:46:30 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
         }
         else if (min == 4)
             r_rotate(stack_a, 'a');
-            push_stack(stack_a, stack_b, 'b');
-            sort_four(stack_a, stack_b);
-            push_stack(stack_b, stack_a, 'a');
+        push_stack(stack_a, stack_b, 'b');
+        sort_four(stack_a, stack_b);
+        push_stack(stack_b, stack_a, 'a');
     }
 }
