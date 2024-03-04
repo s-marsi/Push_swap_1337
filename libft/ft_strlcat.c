@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 19:32:59 by smarsi            #+#    #+#             */
-/*   Updated: 2023/11/19 17:13:41 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/03/03 17:39:55 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	len_dst;
 	size_t	len_src;
-	size_t	lenght_return;
 	size_t	i;
 
 	if (!dst && !dstsize)
@@ -25,7 +24,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	len_dst = ft_strlen(dst);
 	if (dstsize == 0 || dstsize < len_dst)
 		return (ft_strlen(src) + dstsize);
-	lenght_return = len_dst + len_src;
 	i = 0;
 	while (src[i] && len_dst + i < dstsize - 1)
 	{
