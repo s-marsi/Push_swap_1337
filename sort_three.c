@@ -6,109 +6,80 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:43:19 by smarsi            #+#    #+#             */
-/*   Updated: 2024/03/02 07:55:26 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/03/03 14:41:23 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	swap_arr(int *arr, int *index, int i, int j)
-{
-	int	tmp;
-
-	tmp = arr[i];
-	arr[i] = arr[j];
-	arr[j] = tmp;
-	tmp = index[i];
-	index[i] = index[j];
-	index[j] = tmp;
-}
-
 static	int	find_small(t_stack *stack)
 {
 	t_stack	*tmp;
-	int		index;
-	int		j;
-	int		min;
+	int		value;
 
+	value = stack->content;
 	if (stack)
 	{
-		min = stack->content;
 		tmp = stack->next;
-		index = 0;
-		j = 1;
 		while (tmp)
 		{
-			if (tmp->content < min)
-			{
-				index = tmp->index;
-				min = tmp->content;
-			}
-			j++;
+			if (tmp->content < value)
+				value = tmp->content;
 			tmp = tmp->next;
 		}
-		return (index);
 	}
-	return (4);
+	return (value);
 }
 
-static	int	find_moy(t_stack *stack)
+static	int	find_max(t_stack *stack)
 {
 	t_stack	*tmp;
-	int		arr[3];
-	int		index[3];
-	int		i;
+	int		value;
 
-	i = 0;
-	tmp = stack;
-	while (tmp)
+	value = stack->content;
+	if (stack)
 	{
-		arr[i] = tmp->content;
-		index[i++] = tmp->index;
-		tmp = tmp->next;
-	}
-	i = 0;
-	while (i < 2)
-	{
-		if (arr[i] > arr[i + 1])
+		tmp = stack->next;
+		while (tmp)
 		{
-			swap_arr(arr, index, i, i + 1);
-			i = 0;
+			if (tmp->content > value)
+				value = tmp->content;
+			tmp = tmp->next;
 		}
-		else
-			i++;
 	}
-	return (index[1]);
+	return (value);
 }
 
-static void	check_case(t_stack **stack_a, int min, int next_min)
+static int	check_sort(t_stack *stack)
 {
-	if (min == 0 && next_min == 2)
+	while (stack->next)
 	{
-		r_rotate(stack_a, 'a');
-		swap(stack_a, 'a');
+		if (stack->content > stack->next->content)
+			return (1);
+		stack = stack->next;
 	}
-	else if (min == 1 && next_min == 0)
-		swap(stack_a, 'a');
-	else if (min == 1 && next_min == 2)
-		rotate(stack_a, 'a');
-	if (min == 2 && next_min == 0)
-		r_rotate(stack_a, 'a');
-	else if (min == 2 && next_min == 1)
-	{
-		rotate(stack_a, 'a');
-		swap(stack_a, 'a');
-	}
+	return (0);
 }
 
 void	sort_three(t_stack **stack_a)
 {
-	int		min;
-	int		next_min;
-	t_stack	*tmp;
+	int	min;
+	int	max;
 
-	tmp = *stack_a;
-	min = find_small(tmp);
-	next_min = find_moy(tmp);
-	check_case(stack_a, min, next_min);
+	min = find_small(*stack_a);
+	max = find_max(*stack_a);
+	if (ft_lstsize(*stack_a) < 3 && check_sort(*stack_a) == 1)
+	{
+		swap(stack_a, 'a');
+		return ;
+	}
+	while (check_sort(*stack_a) == 1) 
+	{
+		if (max == (*stack_a)->content)
+			rotate(stack_a, 'a');
+		if (min == (*stack_a)->next->content)
+			swap(stack_a, 'a');
+		if (max == (*stack_a)->next->content)
+			r_rotate(stack_a, 'a');
+	}
 }

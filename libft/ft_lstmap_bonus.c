@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:01:41 by smarsi            #+#    #+#             */
-/*   Updated: 2024/02/25 10:45:01 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/02/28 21:55:43 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_stack	*ft_lstmap(t_stack *lst, int (*f)(int), void (*del)(int))
 	{
 		while (lst)
 		{
-			new = ft_lstnew(f(lst->content));
+			new = ft_lstnew(f(lst->content), 0);
 			if (!new)
 			{
 				ft_lstclear(&head, del);

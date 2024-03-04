@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 23:48:08 by smarsi            #+#    #+#             */
-/*   Updated: 2024/02/28 09:10:47 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/03/02 22:15:30 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	rotate(t_stack **stack, char c)
 {
 	t_stack	*tmp;
 
-	if (*stack)
+	if (ft_lstsize(*stack) > 1)
 	{
 		tmp = *stack;
 		*stack = (*stack)->next;
@@ -31,7 +31,7 @@ void	rotate(t_stack **stack, char c)
 
 void	rotate_r(t_stack **stack_a, t_stack **stack_b)
 {
-	if (*stack_b && *stack_b)
+	if (ft_lstsize(*stack_a) > 1 && ft_lstsize(*stack_b) > 1)
 	{
 		rotate(stack_a, 'r');
 		rotate(stack_b, 'r');
@@ -45,7 +45,7 @@ void	r_rotate(t_stack **stack, char c)
 	t_stack	*stack_clone;
 	int		i;
 
-	if (*stack)
+	if (ft_lstsize(*stack) > 1)
 	{
 		tmp = ft_lstlast(*stack);
 		stack_clone = *stack;
@@ -66,7 +66,7 @@ void	r_rotate(t_stack **stack, char c)
 
 void	r_rotate_r(t_stack **stack_a, t_stack **stack_b)
 {
-	if (*stack_b && *stack_b)
+	if (ft_lstsize(*stack_a) > 1 && ft_lstsize(*stack_b) > 1)
 	{
 		r_rotate(stack_a, 'r');
 		r_rotate(stack_b, 'r');
