@@ -6,32 +6,97 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 13:25:41 by smarsi            #+#    #+#             */
-/*   Updated: 2024/02/25 13:41:09 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/03/04 09:41:17 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_dup(char	**numbers)
+void ft_free(char **s)
 {
-	int	i;
-	int	j;
+	int i;
 
 	i = 0;
-	while (numbers[i])
+	if (!s)
+		return;
+	while (s[i])
 	{
-		j = i + 1;
-		while (numbers[j])
-		{
-			if (ft_atoi(numbers[j]) == ft_atoi(numbers[i]))
-			{
-				write(2, "Error: Duplicate number ", 24);
-				write(2, numbers[j], ft_strlen(numbers[j]));
-				write(2, " found\n", 7);
-				exit(1);
-			}
-			j++;
-		}
-		i++;
+		free(s[i]);
+		s[i++] = NULL;
 	}
+	free(s);
+	s = NULL;
+}
+
+void check_dup(char **numbers)
+{
+	int i;
+	int j;
+
+	i = 0;
+	if (numbers[i])
+	{
+		while (numbers[i])
+		{
+			j = i + 1;
+			while (numbers[j])
+			{
+				if (ft_atoi(numbers[j]) == ft_atoi(numbers[i]))
+				{
+					write(2, "Error\n", 6);
+					ft_free(numbers);
+					exit(1);
+				}
+				j++;
+			}
+			i++;
+		}
+	}
+	
+}
+
+static char *remove_tab(char *str)
+{
+	char *new;
+	char **str_split;
+	char *tmp;
+	int i;
+
+	str_split = ft_split(str, '\t');
+	if (!str_split)
+		return (NULL);
+	free(str);
+	new = NULL;
+	i = 0;
+	while (str_split[i])
+	{
+		tmp = ft_strjoin(new, " ");
+		new = ft_strjoin(tmp, str_split[i++]);
+	}
+	ft_free(str_split);
+	return (new);
+}
+
+char **get_args(int ac, char *av[])
+{
+	char **split_numbers;
+	char *numbers;
+	int	i;
+
+	numbers = NULL;
+	if (ac >= 2)
+	{
+		i = 1;
+		while (i < ac)
+		{
+			numbers = ft_strjoin(numbers, " ");
+			numbers = ft_strjoin(numbers, av[i]);
+			i++;
+		}
+	}
+	numbers = remove_tab(numbers);
+	split_numbers = ft_split(numbers, ' ');
+	free(numbers);
+	numbers = NULL;
+	return (split_numbers);
 }
