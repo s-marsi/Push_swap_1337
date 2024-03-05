@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 15:35:23 by smarsi            #+#    #+#             */
-/*   Updated: 2024/03/04 09:40:44 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/03/05 21:02:51 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,20 @@
 
 static void	check_is_number_no_dup(char	**numbers)
 {
-	int		i;
-	int		j;
 	long long	num;
+	int			i;
+	int			j;
 
 	i = 0;
 	check_dup(numbers);
 	while (numbers[i])
 	{
-		num = ft_atoi(numbers[i]);
-		if (num < -2147483648 || num > 2147483647)
-		{
-			write(2, "Error\n", 6);
-			exit(1);
-		}
+		check_int(numbers[i]);
 		j = 0;
 		while (numbers[i] && numbers[i][j])
 		{
-			if ((numbers[i][j] == '-' || numbers[i][j] == '+') && numbers[i][j + 1])
+			num = numbers[i][j];
+			if ((num == '-' || num == '+') && numbers[i][j + 1])
 				j++;
 			if (!ft_isdigit(numbers[i][j]))
 			{
@@ -47,9 +43,9 @@ static void	check_is_number_no_dup(char	**numbers)
 
 static char	**check_args(int ac, char *av[])
 {
-	int	i;
-	int	j;
-	char **split_numbers;
+	char	**split_numbers;
+	int		i;
+	int		j;
 
 	i = 1;
 	while (i < ac)
@@ -71,16 +67,19 @@ static char	**check_args(int ac, char *av[])
 
 static void	sort_chooser(t_stack **stack_a, t_stack **stack_b)
 {
-	if (ft_lstsize(*stack_a) <= 3)
-		sort_three(stack_a);
-	else if (ft_lstsize(*stack_a) <= 4)
-		sort_four(stack_a, stack_b);
-	else if (ft_lstsize(*stack_a) <= 5)
-		sort_five(stack_a, stack_b);
-	else if (ft_lstsize(*stack_a) <= 100)
-		sort_stack(stack_a, stack_b, 15);
-	else if (ft_lstsize(*stack_a) <= 500)
-		sort_stack(stack_a, stack_b, 30);
+	if (is_sort(*stack_a))
+	{
+		if (ft_lstsize(*stack_a) <= 3)
+			sort_three(stack_a);
+		else if (ft_lstsize(*stack_a) <= 4)
+			sort_four(stack_a, stack_b);
+		else if (ft_lstsize(*stack_a) <= 5)
+			sort_five(stack_a, stack_b);
+		else if (ft_lstsize(*stack_a) <= 100)
+			sort_stack(stack_a, stack_b, 10);
+		else if (ft_lstsize(*stack_a) <= 500)
+			sort_stack(stack_a, stack_b, 30);
+	}
 }
 
 int	main(int ac, char *av[])
