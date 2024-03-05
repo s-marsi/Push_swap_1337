@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_numbers.c                                      :+:      :+:    :+:   */
+/*   helpers2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/25 10:23:20 by smarsi            #+#    #+#             */
-/*   Updated: 2024/03/05 19:12:50 by smarsi           ###   ########.fr       */
+/*   Created: 2024/03/05 19:04:05 by smarsi            #+#    #+#             */
+/*   Updated: 2024/03/05 19:21:22 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "src/libft/libft.h"
+#include "../push_swap.h"
 
-void	add_numbers_into_linkedlist(char **numbers, t_stack	**stack_a)
+void	check_int(char *numbers)
 {
-	t_stack	*new_lst;
-	int		i;
-	int		nb;
+	long long	num;
 
-	i = 0;
-	while (numbers[i])
+	num = ft_atoi(numbers);
+	if (num < -2147483648 || num > 2147483647)
 	{
-		nb = ft_atoi(numbers[i]);
-		new_lst = ft_lstnew(nb, i);
-		if (new_lst)
-			ft_lstadd_back(stack_a, new_lst);
-		i++;
+		write(2, "Error\n", 6);
+		exit(1);
 	}
 }

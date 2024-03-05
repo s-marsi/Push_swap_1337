@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_numbers.c                                      :+:      :+:    :+:   */
+/*   move_push.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/25 10:23:20 by smarsi            #+#    #+#             */
-/*   Updated: 2024/03/05 19:12:50 by smarsi           ###   ########.fr       */
+/*   Created: 2024/02/27 23:49:18 by smarsi            #+#    #+#             */
+/*   Updated: 2024/03/05 19:11:18 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "src/libft/libft.h"
+#include "../push_swap.h"
 
-void	add_numbers_into_linkedlist(char **numbers, t_stack	**stack_a)
+void	push_stack(t_stack **src, t_stack **dst, char c)
 {
-	t_stack	*new_lst;
-	int		i;
-	int		nb;
+	t_stack	*new;
+	t_stack	*tmp;
 
-	i = 0;
-	while (numbers[i])
+	if (*src)
 	{
-		nb = ft_atoi(numbers[i]);
-		new_lst = ft_lstnew(nb, i);
-		if (new_lst)
-			ft_lstadd_back(stack_a, new_lst);
-		i++;
+		new = *src;
+		tmp = (*src)->next;
+		ft_lstadd_front(dst, new);
+		*src = tmp;
+		if (c == 'a')
+			write(1, "pa\n", 3);
+		else if (c == 'b')
+			write(1, "pb\n", 3);
 	}
 }

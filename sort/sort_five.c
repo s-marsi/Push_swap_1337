@@ -6,11 +6,11 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 15:52:28 by smarsi            #+#    #+#             */
-/*   Updated: 2024/03/04 10:46:30 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/03/05 19:11:30 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 static	int	find_small(t_stack *stack)
 {
@@ -53,29 +53,29 @@ static int	check_sort(t_stack *stack)
 
 void	sort_five(t_stack **stack_a, t_stack **stack_b)
 {
-	int		min;
 	t_stack	*tmp;
+	int		min;
 
 	tmp = *stack_a;
 	min = find_small(tmp);
-    if (check_sort(*stack_a))
-    {
-        if (min == 1)
-            swap(stack_a, 'a');
-        else if(min == 2)
-        {
-            rotate(stack_a, 'a');
-            rotate(stack_a, 'a');
-        }
-        else if(min == 3)
-        {
-            r_rotate(stack_a, 'a');
-            r_rotate(stack_a, 'a');
-        }
-        else if (min == 4)
-            r_rotate(stack_a, 'a');
-        push_stack(stack_a, stack_b, 'b');
-        sort_four(stack_a, stack_b);
-        push_stack(stack_b, stack_a, 'a');
-    }
+	if (check_sort(*stack_a))
+	{
+		if (min == 1)
+			swap(stack_a, 'a');
+		else if (min == 2)
+		{
+			rotate(stack_a, 'a');
+			rotate(stack_a, 'a');
+		}
+		else if (min == 3)
+		{
+			r_rotate(stack_a, 'a');
+			r_rotate(stack_a, 'a');
+		}
+		else if (min == 4)
+			r_rotate(stack_a, 'a');
+		push_stack(stack_a, stack_b, 'b');
+		sort_four(stack_a, stack_b);
+		push_stack(stack_b, stack_a, 'a');
+	}
 }

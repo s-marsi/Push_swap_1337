@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/24 15:35:23 by smarsi            #+#    #+#             */
-/*   Updated: 2024/03/05 21:02:51 by smarsi           ###   ########.fr       */
+/*   Created: 2024/03/05 10:50:24 by smarsi            #+#    #+#             */
+/*   Updated: 2024/03/05 18:56:03 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 static void	check_is_number_no_dup(char	**numbers)
 {
@@ -19,7 +19,7 @@ static void	check_is_number_no_dup(char	**numbers)
 	int			j;
 
 	i = 0;
-	check_dup(numbers);
+	check_dup (numbers);
 	while (numbers[i])
 	{
 		check_int(numbers[i]);
@@ -29,7 +29,7 @@ static void	check_is_number_no_dup(char	**numbers)
 			num = numbers[i][j];
 			if ((num == '-' || num == '+') && numbers[i][j + 1])
 				j++;
-			if (!ft_isdigit(numbers[i][j]))
+			if (!ft_isdigit(num))
 			{
 				ft_free(numbers);
 				write(2, "Error\n", 6);
@@ -65,21 +65,47 @@ static char	**check_args(int ac, char *av[])
 	return (split_numbers);
 }
 
-static void	sort_chooser(t_stack **stack_a, t_stack **stack_b)
+static void	check_sort(t_stack *stack_a, t_stack *stack_b)
 {
-	if (is_sort(*stack_a))
+	int	flag;
+
+	flag = 1;
+	if (stack_b)
+		flag = 0;
+	while (stack_a && stack_a->next)
 	{
-		if (ft_lstsize(*stack_a) <= 3)
-			sort_three(stack_a);
-		else if (ft_lstsize(*stack_a) <= 4)
-			sort_four(stack_a, stack_b);
-		else if (ft_lstsize(*stack_a) <= 5)
-			sort_five(stack_a, stack_b);
-		else if (ft_lstsize(*stack_a) <= 100)
-			sort_stack(stack_a, stack_b, 10);
-		else if (ft_lstsize(*stack_a) <= 500)
-			sort_stack(stack_a, stack_b, 30);
+		if (stack_a->content > stack_a->next->content)
+		{
+			flag = 0;
+			break ;
+		}
+		stack_a = stack_a->next;
 	}
+	if (flag == 1)
+		write(1, "OK\n", 3);
+	else
+		write(0, "KO\n", 3);
+}
+
+void	get_do_move(t_stack **stack_a, t_stack **stack_b)
+{
+	char	*buff;
+	t_stack	*a;
+	t_stack	*b;
+
+	buff = NULL;
+	while (1)
+	{
+		buff = get_next_line(0);
+		if (!buff)
+			break ;
+		do_move(stack_a, stack_b, buff);
+		a = *stack_a;
+		b = *stack_b;
+		free(buff);
+		buff = NULL;
+	}
+	check_sort(*stack_a, *stack_b);
 }
 
 int	main(int ac, char *av[])
@@ -96,9 +122,8 @@ int	main(int ac, char *av[])
 		if (!split_numbers)
 			return (0);
 		add_numbers_into_linkedlist(split_numbers, &stack_a);
-		index_list(&stack_a, ft_lstsize(stack_a));
-		sort_chooser(&stack_a, &stack_b);
 		ft_free(split_numbers);
+		get_do_move(&stack_a, &stack_b);
 		ft_lstclear(&stack_a, NULL);
 		ft_lstclear(&stack_b, NULL);
 	}
