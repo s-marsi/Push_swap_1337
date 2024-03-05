@@ -6,12 +6,12 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 10:23:20 by smarsi            #+#    #+#             */
-/*   Updated: 2024/03/04 09:43:19 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/03/05 19:12:50 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft/libft.h"
+#include "src/libft/libft.h"
 
 void	add_numbers_into_linkedlist(char **numbers, t_stack	**stack_a)
 {
