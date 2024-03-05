@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 18:02:28 by smarsi            #+#    #+#             */
-/*   Updated: 2024/03/04 07:55:10 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/03/05 18:56:52 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	index_list(t_stack **stack, int len)
 	if (!arr)
 	{
 		ft_lstclear(stack, NULL);
-		exit(1);	
+		exit(1);
 	}
 	fill_array(*stack, arr, len);
 	sort_arr(arr, len);
