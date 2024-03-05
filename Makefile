@@ -6,7 +6,7 @@ NAME = push_swap
 
 NAME_BONUS = checker
 
-LIBFT = src/libft
+LIBFT = src/libft/
 
 LIBFT_NAME = src/libft/libft.a
 
@@ -14,8 +14,7 @@ FILES = src/helpers.c src/helpers2.c add_numbers.c move/move_push.c move/move_ro
  	 main.c sort/sort_three.c sort/sort_four.c sort/sort_five.c index_list.c sort/sort_list.c
 
 FILES_BONUS = src/helpers.c src/helpers2.c add_numbers.c move/move_push.c move/move_rotate.c move/move_swap.c \
- 	src/get_next_line/get_next_line.c src/get_next_line/get_next_line_utils.c \
-	main_bonus.c src/helpers_bonus.c main_bonus.c
+ 	src/get_next_line/get_next_line.c src/get_next_line/get_next_line_utils.c src/helpers_bonus.c main_bonus.c 
 
 FILES_O = $(FILES:.c=.o)
 
@@ -31,7 +30,7 @@ $(NAME_BONUS) :  $(BONUS_O)
 
 bonus : $(NAME_BONUS)
 
-all : $(NAME) 
+all : $(NAME) $(NAME_BONUS)
 
  clean : 
 	make clean -C $(LIBFT)

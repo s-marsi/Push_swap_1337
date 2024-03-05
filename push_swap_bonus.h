@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 10:50:45 by smarsi            #+#    #+#             */
-/*   Updated: 2024/03/05 19:19:35 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/03/05 22:52:28 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,14 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <limits.h>
-# include "libft/libft.h"
+# include "src/libft/libft.h"
 # include "push_swap.h"
 
-char	*get_next_line(int fd);
+char    *get_next_line(int fd);
 int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strjoin_next(char *s1, char *s2);
 char	*ft_strchr(const char *s, int c);
 char	*read_all(int fd, char *last);
+void	do_move(t_stack **stack_a, t_stack **stack_b, char *buff);
 
 #endif

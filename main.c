@@ -6,7 +6,7 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 15:35:23 by smarsi            #+#    #+#             */
-/*   Updated: 2024/03/05 21:02:51 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/03/05 22:49:19 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static void	sort_chooser(t_stack **stack_a, t_stack **stack_b)
 			sort_five(stack_a, stack_b);
 		else if (ft_lstsize(*stack_a) <= 100)
 			sort_stack(stack_a, stack_b, 10);
-		else if (ft_lstsize(*stack_a) <= 500)
+		else
 			sort_stack(stack_a, stack_b, 30);
 	}
 }

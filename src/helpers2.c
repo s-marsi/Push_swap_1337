@@ -6,11 +6,11 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 19:04:05 by smarsi            #+#    #+#             */
-/*   Updated: 2024/03/05 19:21:22 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/03/05 22:49:19 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../push_swap_bonus.h"
 
 void	check_int(char *numbers)
 {

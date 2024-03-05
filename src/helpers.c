@@ -6,11 +6,11 @@
 /*   By: smarsi <smarsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 13:25:41 by smarsi            #+#    #+#             */
-/*   Updated: 2024/03/05 19:21:25 by smarsi           ###   ########.fr       */
+/*   Updated: 2024/03/05 22:49:25 by smarsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../push_swap_bonus.h"
 
 void	ft_free(char **s)
 {
