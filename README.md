@@ -32,7 +32,8 @@
     make clean      # This will remove object files.
     ```
 ## Usage :
-- To use the push_swap program run push_swap with a list of integers:
+- To use the push_swap program, run push_swap with a list of integers.
+  
   ### EXAMPLE
   ```bash
   ./push_swap 2 0 1 4 7 5
