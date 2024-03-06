@@ -23,7 +23,7 @@
 ### Installation
 1. Clone the repository:
     ```bash
-    https://github.com/s-marsi/Push_swap_1337.git push_swap
+    git clone https://github.com/s-marsi/Push_swap_1337.git push_swap
     cd push_swap
     ```
 2. Compile the library:
